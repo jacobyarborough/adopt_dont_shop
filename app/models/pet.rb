@@ -9,6 +9,10 @@ class Pet < ApplicationRecord
     shelter.name
   end
 
+  def app_stat(app_id, pet_id)
+    ApplicationPet.where(application_id: app_id, pet_id: pet_id).pluck(:status)[0]
+  end 
+
   def self.adoptable
     where(adoptable: true)
   end
